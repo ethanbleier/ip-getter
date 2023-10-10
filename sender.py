@@ -2,12 +2,13 @@
 
 import smtplib
 import ip_getter
+from config import TO_EMAIL, FROM_EMAIL, PASSWORD
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 def send_email(ip_address, to_email):
-	from_email = 'ebleier4@gmail.com'
-	email_password = 'wqcj rgdk uhga xiee'
+	from_email = FROM_EMAIL
+	email_password = PASSWORD
 
 	subject = 'working!'
 	message = f'ip: {ip_address}'
@@ -28,11 +29,10 @@ def send_email(ip_address, to_email):
 	except Exception as e:
 		print(f'Error {str(e)}')
 
-
 if __name__ == "__main__":
 	ip_address = ip_getter.get_ip()
 	if ip_address:
-		to_email = 'ebleier@csumb.edu'
+		to_email = TO_EMAIL
 		send_email(ip_address, to_email)
 	else:
 		print('failed to fetch ip')
