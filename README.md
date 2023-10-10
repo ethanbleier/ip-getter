@@ -2,8 +2,8 @@
 ### *remotely access an ip address, location*
 ----
 
-This is mostly all template/example code
-Set your own machine's paths in `run_sender.sh`
+This is mostly all template/example code\
+Set your own machine's paths in `run_sender.sh`\
 Assume you cannot send mail from a non-gmail email account, but this has not yet been verified
 
 
