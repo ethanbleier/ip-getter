@@ -10,8 +10,8 @@
 **config.py**
 ```
 import os
-FROM_EMAIL = os.environ.get('from@csumb.edu') 
-TO_EMAIL = os.environ.get('to@gmail.com') 
+FROM_EMAIL = os.environ.get('from_some_gmail@gmail.com') 
+TO_EMAIL = os.environ.get('toAnyEmail@csumb.edu') 
 PASSWORD = os.environ.get('your google app password')
 ```
 
