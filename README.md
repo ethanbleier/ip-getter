@@ -1,6 +1,8 @@
 # ip script
 ### *Remotely access ip address.*
 
+- only works on python3.11
+- TODO: make work on 3.12
 - This is mostly all template/example code
 - Set your own machine's paths in `run_sender.sh`
 - Assume you cannot send mail from a non-gmail email account, but this has not yet been verified
