@@ -7,32 +7,38 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 def send_email(ip_address, to_email):
-	from_email = FROM_EMAIL
-	email_password = PASSWORD
+    if ip_address is None:
+        print("IP address is NONE")
+        return
 
-	subject = 'working!'
-	message = f'ip: {ip_address}'
+    from_email = FROM_EMAIL
+    email_password = PASSWORD
 
-	msg = MIMEMultipart()
-	msg['From'] = from_email
-	msg['To'] = to_email
-	msg['Subject'] = subject
-	msg.attach(MIMEText(message, 'plain'))
+    subject = 'Your IP has arrived!'
+    message = f'ip: {ip_address}'
 
-	try: 
-		server = smtplib.SMTP('smtp.gmail.com', 587)
-		server.starttls()
-		server.login(from_email, email_password)
-		server.sendmail(from_email, to_email, msg.as_string())
-		server.quit()
-		print('nice.')
-	except Exception as e:
-		print(f'Error {str(e)}')
+    msg = MIMEMultipart()
+    msg['From'] = from_email
+    msg['To'] = to_email
+    msg['Subject'] = subject
+    msg.attach(MIMEText(message, 'plain'))
+
+    try:
+        server = smtplib.SMTP('smtp.gmail.com', 587)
+        server.starttls()
+        server.login(from_email, email_password)
+        msg = msg.as_string()
+        server.sendmail(from_email, to_email, msg)
+        server.quit()
+        print('nice.')
+    except Exception as e:
+        print(f'Error: {str(e)}')
 
 if __name__ == "__main__":
-	ip_address = ip_getter.get_ip()
-	if ip_address:
-		to_email = TO_EMAIL
-		send_email(ip_address, to_email)
-	else:
-		print('failed to fetch ip')
+    ip_address = ip_getter.get_ip()
+    to_email = TO_EMAIL
+
+    if ip_address:
+        send_email(ip_address, to_email)
+    else:
+        print('Failed to fetch IP')
